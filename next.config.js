@@ -4,6 +4,18 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
+const isGithubActions = process.env.GITHUB_ACTIONS || false
+
+let assetPrefix = ''
+let basePath = '/'
+
+if (isGithubActions) {
+  // trim off `<owner>/`
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+
+  assetPrefix = `/${repo}/`
+  basePath = `/${repo}`
+}
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
@@ -60,6 +72,8 @@ const securityHeaders = [
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
   return plugins.reduce((acc, next) => next(acc), {
+    assetPrefix: assetPrefix,
+    basePath: basePath,
     reactStrictMode: true,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     eslint: {
