@@ -1,0 +1,16 @@
+---
+title: Memorable Bug
+date: '2021-01-31'
+tags: ['debugging']
+summary: One fine morning, my project manager assigned me the task of resolving some tricky bugs in the frontend...
+images: []
+---
+
+One fine morning, my project manager assigned me the task of resolving some tricky bugs in the frontend, issues that only emerged during deployment, not in local development.
+That was a bit challenging for me because all I have is the browser to identify the root cause of the bugs. Furthermore, I could only confirm if my fixes really worked once the code was deployed.
+So I took a gulp of water to calm myself down and started debugging.
+Initially, the first two to three bugs triggered errors and I can check them in the browser console. Most of the errors were about the use of undefined javascript arrays which is all good in my local code base. But I decided to refactor these functions to ensure the functions do not return any falsey values.
+I even literally check the index files within browser sources to trace the origins of the function causing the errors. Soon after I finished refactoring, I moved to the next bug - missing a button that another developer had created. So I checked the code with inspector and I found no html codes for that button in browser. leading to doubt.
+So I stopped debugging and asked my project manager to check the server-side codes.
+And as soon as I can check, and there we go, I discovered that certain code segments were missing on server, resulting in inconsistencies between the deployed code and the development repositories.I didn't know how that happened but I felt a bit relieved that I finally found out the single root cause of all bugs.
+I had to check and observe the deployment scripts to figure out the solution and yes I made it fixing those bugs.
