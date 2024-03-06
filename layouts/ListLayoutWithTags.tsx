@@ -25,7 +25,7 @@ interface ListLayoutProps {
 function Pagination({ totalPages, currentPage }: PaginationProps) {
   const pathname = usePathname()
   const basePath = pathname.split('/')[1]
-  console.log(`this is base path ${basePath}`)
+  console.log(`this is base path ${pathname}`)
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
 
@@ -54,7 +54,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           </button>
         )}
         {nextPage && (
-          <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
+          <Link href={basePath ? `/${basePath}/page/${currentPage + 1}` : `/page/${currentPage + 1}`} rel="next">
             Next
           </Link>
         )}
