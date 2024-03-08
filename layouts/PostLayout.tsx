@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
@@ -9,6 +10,7 @@ import Image from '@/components/Image'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import ScrollTopAndComment from '@/components/ScrollTopAndComment'
+import { useRouter } from 'next/navigation'
 
 const editUrl = (path) => `${siteMetadata.siteRepo}`
 const discussUrl = (path) =>
@@ -21,6 +23,7 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
   day: 'numeric',
 }
 
+
 interface LayoutProps {
   content: CoreContent<Blog>
   authorDetails: CoreContent<Authors>[]
@@ -32,6 +35,7 @@ interface LayoutProps {
 export default function PostLayout({ content, authorDetails, next, prev, children }: LayoutProps) {
   const { filePath, path, slug, date, title, tags } = content
   const basePath = path.split('/')[0]
+  const router = useRouter()
 
   return (
     <SectionContainer>
@@ -149,13 +153,13 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 )}
               </div>
               <div className="pt-4 xl:pt-8">
-                <Link
-                  href={`/${basePath}`}
+                <button
                   className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
                   aria-label="Back to the blog"
+                  onClick={router.back}
                 >
                   &larr; Back to the blog
-                </Link>
+                </button>
               </div>
             </footer>
           </div>
