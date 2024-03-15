@@ -6,7 +6,7 @@ const siteMetadata = {
   description: 'Some of my encounters that I want to share.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://main--khinyu-personal-blog.netlify.app/',
+  siteUrl: 'https://khinyu.com/',
   siteRepo: 'https://github.com/Khinyu2000/khinyu-personal-blog',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/avatar.png',
