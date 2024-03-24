@@ -50,6 +50,8 @@ export async function generateMetadata({
     }
   })
 
+
+
   return {
     title: post.title,
     description: post.summary,
@@ -61,7 +63,7 @@ export async function generateMetadata({
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
-      url: './',
+      url: `./${params.slug}`,
       images: ogImages,
       authors: authors.length > 0 ? authors : [siteMetadata.author],
     },
