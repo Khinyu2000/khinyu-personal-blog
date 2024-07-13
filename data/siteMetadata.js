@@ -13,7 +13,7 @@ const siteMetadata = {
   mastodon: '',
   email: 'khinyu2000@gmail.com',
   github: 'https://github.com/Khinyu2000',
-  linkedin: 'https://www.linkedin.com/in/khin-yu-waddy-thin-93064b211/',
+  linkedin: 'https://www.linkedin.com/in/khin-yu-waddy-thin/',
   locale: 'en-US',
   analytics: {
     // If you want to use an analytics provider you have to add it to the
