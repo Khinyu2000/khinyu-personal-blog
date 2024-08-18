@@ -1,0 +1,39 @@
+
+---
+title: Tools I Use for Development In AWS Lambda Without AWS Console Access
+date: '2024-08-18'
+tags: ['aws']
+draft: false
+summary: I was assigned to work on a project where the backend infrastructure is built using AWS cloud services...
+images: ['/static/images/cover/tools_for_development_with_aws.jpg']
+---
+![tools_for_development_with_aws cover photo](/static/images/cover/tools_for_development_with_aws.jpg)
+
+# Tools I Use for Development In AWS Lambda Without AWS Console Access
+
+I was assigned to a project where the backend is built using AWS, especially AWS Lambda. My CTO provided me with only an AWS access key ID and secret access key, so I had to find a way to develop efficiently without using the AWS Management Console. Below are the tools I use for developing the backend without console access:<br />
+TL;DR<br />
+1. **VS Code**  
+2. **Terraform**  
+3. **AWS CLI**  
+4. **[cw](https://github.com/lucagrulla/cw)**
+<br />
+
+
+## 1. VS Code
+
+AWS Lambda has its default console code editor, but as I mentioned, I do not have console access. Therefore, I had to use an alternative method supported by AWS which is uploading code as archives. I write the code in VS Code, bundle the project into ZIP files, hook those files to the Lambda function, and deploy the lambda using Terraform. Even if you have console access, you might still need to this way at one point because the file size limit for direct uploads via the Lambda console code editor is only 3 MB. You can learn more about Lambda quotas [here](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)
+
+## 2. Terraform
+
+Since I cannot use the console, I had to use deployment tools to manage AWS resources in the cloud. I use Terraform, which is one of the most widely used and well-known tools for AWS. I configure and use a remote backend deployment with Terraform, as my colleagues are also working on the same project.
+
+## 3. AWS CLI
+
+AWS CLI is where I set up my AWS credentials to deploy resources with Terraform. After installing the AWS CLI package, configure the AWS identity using the access key ID and secret access key, and then deploy AWS resources with terraform. I also check the state of the deployed resources by invoking AWS API calls via the AWS CLI, without using the console.
+
+## 4. CW Package
+
+AWS CloudWatch is a service used for monitoring and logging AWS resources. I once used that service for logging and debugging errors in lambda in one project before but in the console. So I needed a way to access logs outside of it and I found a package called cw. It allows me to view CloudWatch logs for my Lambda functions over different time ranges in the terminal. So I create a CloudWatch resource for my lambda function and deploy it along with terraform and then use CW package in the terminal review the logs which is really cool.
+<br />
+These are the tools I currently using in my AWS development workflow. Sharing is caring!
