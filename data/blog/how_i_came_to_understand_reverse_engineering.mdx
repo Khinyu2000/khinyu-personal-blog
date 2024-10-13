@@ -1,0 +1,16 @@
+---
+title: How I Came to Understand Reverse Engineering
+date: '2024-10-13'
+tags: ['software engineering']
+draft: false
+summary: One morning, I was watching a YouTube video that explains how a specific library works, and I heard the term "reverse engineering"...
+images: ['/static/images/cover/how_i_came_to_understand_reverse_engineering.jpg']
+---
+![how_i_came_to_understand_reverse_engineering cover photo](/static/images/cover/how_i_came_to_understand_reverse_engineering.jpg)
+
+# How I Came to Understand Reverse Engineering
+One morning, I was watching a YouTube video that explains how a specific library works, and I heard the term "reverse engineering". It was new to me, so I decided to search on Google to understand what it means, especially in the context of software engineering. After reading a few articles on various websites, I came to understand the concept, but only in theory.<br />
+
+This week, however, I was assigned a task to integrate third-party software into an API so we could use the services of that software. The CTO even provided me with an example code snippet, which included a parser along with some example configurations. I started working on the task, and as I was figuring out the configurations that would fit the integration, I discovered that the parser provided by the CTO was from a different software, one that only serves as a cloud solution but the third-party software I needed to integrate was self-hosted liket they were two separate pieces of software.<br />
+
+So I checked the codebase of the third-party software and found that no such cloud services were being used. Then I starting to confuse that perhaps the CTO had given me the wrong code snippet or something. However, I decided to try the parser anyway, and it worked suprisingly. After completing the task, I asked the CTO how a parser from a cloud-based software become compatible with that third-party different software, and he explained that it was the "reverse engineering".
